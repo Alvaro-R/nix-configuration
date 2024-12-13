@@ -61,6 +61,7 @@
         # List of Cask Apps
         casks = [
           "wezterm"
+	  "visual-studio-code"
         ];
         # List of MacOS App Store Apps
         masApps = {
@@ -71,7 +72,7 @@
         };
         # Ensure only packages specified in configuration are installed.
         # Apps not listed in configuration will be removed
-        # onActivation.cleanup = "zap";
+        onActivation.cleanup = "zap";
         # Update Homebrew packages
         onActivation.autoUpdate = true;
         onActivation.upgrade = true;
