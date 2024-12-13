@@ -157,7 +157,7 @@
       # The platform the configuration will be used on.
       # x86_64-darwin - Intel
       # aarch64-darwin - Apple Silicon
-      nixpkgs.hostPlatform = "x86_64-darwin";
+      nixpkgs.hostPlatform = "aarch64-darwin";
     };
   in {
     # Build darwin flake using:
@@ -171,7 +171,7 @@
           nix-homebrew = {
             enable = true;
             # Apple Silicon Only
-            # enableRosetta = true
+            enableRosetta = true;
             # User owning the Hombrew prefix
             user = "alvaroroman";
             # If Homebrew already installed, automatically migrate existing Homebrew installations
