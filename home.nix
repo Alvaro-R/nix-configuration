@@ -87,6 +87,7 @@
       extraConfig = {
         core = {
           excludesFile="/Users/alvaroroman/.dotfiles/.config/git/gitignore_global";
+          editor = "code --wait";
     };
   };
     };
