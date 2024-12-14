@@ -57,6 +57,7 @@
         enable = true;
         brews = [
           "mas"
+          "stow"
         ];
         # List of Cask Apps
         casks = [
