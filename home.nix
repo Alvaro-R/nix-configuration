@@ -83,8 +83,8 @@
   programs = {
     git = {
       enable = true;
-      userName = "Probando Git";
-      userEmail = "50854675+NelsonJeppesen@users.noreply.github.com";
+      userName = "Alvaro-R";
+      userEmail = "alvaro.roman@users.noreply.github.com";
     };
   };
 
