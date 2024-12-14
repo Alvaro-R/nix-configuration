@@ -84,6 +84,11 @@
       enable = true;
       userName = "Alvaro-R";
       userEmail = "alvaro.roman@users.noreply.github.com";
+      extraConfig = {
+        core = {
+          excludesFile="/Users/alvaroroman/.dotfiles/.config/git/gitignore_global";
+    };
+  };
     };
   };
 }
