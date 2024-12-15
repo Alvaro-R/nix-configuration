@@ -59,11 +59,14 @@
         brews = [
           "mas"
           "stow"
+          "r"
+          "starship"
         ];
         # List of Cask Apps
         casks = [
           "wezterm"
           "visual-studio-code"
+          "rstudio"
         ];
         # List of MacOS App Store Apps
         masApps = {
@@ -177,7 +180,8 @@
         # Menu Extra Clock
         # TODO
         # NSGlobalDomain
-        # TODO
+        NSGlobalDomain.AppleInterfaceStyle="Dark"; # Set to 'Dark' to enable dark mode, or leave unset for normal mode.
+        NSGlobalDomain.AppleInterfaceStyleSwitchesAutomatically=false; # Whether to automatically switch between light and dark mode. The default is false.
 
         # Screen capture
         screencapture.disable-shadow = false;
@@ -199,6 +203,10 @@
       # Enable alternative shell support in nix-darwin.
       # Create /etc/zshrc that loads the nix-darwin environment.
       programs.zsh.enable = true; # default shell on catalina
+      programs.zsh.enableSyntaxHighlighting=true;
+      programs.zsh.enableCompletion = true;
+      programs.zsh.enableBashCompletion = true;
+
       # programs.fish.enable = true;
 
       # Set Git commit hash for darwin-version.
