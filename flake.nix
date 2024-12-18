@@ -68,6 +68,8 @@
           "visual-studio-code"
           "rstudio"
           "spotify"
+          "microsoft-teams"
+          "readdle-spark"
         ];
         # List of MacOS App Store Apps
         masApps = {
