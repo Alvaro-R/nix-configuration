@@ -67,6 +67,7 @@
           "wezterm"
           "visual-studio-code"
           "rstudio"
+          "spotify"
         ];
         # List of MacOS App Store Apps
         masApps = {
@@ -91,7 +92,11 @@
         # (pkgs.nerdfonts.override {fonts = ["JetBrainsMono"];})
         # Version Nix 25.05
         pkgs.nerd-fonts.jetbrains-mono
+        pkgs.nerd-fonts.fira-code
         pkgs.nerd-fonts.fira-mono
+        pkgs.nerd-fonts.caskaydia-mono
+        pkgs.nerd-fonts.sauce-code-pro
+        pkgs.nerd-fonts.monaspace
       ];
       # <<<<<<<<<< Fonts <<<<<<<<<<
 
