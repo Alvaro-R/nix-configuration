@@ -61,6 +61,7 @@
           "stow"
           "r"
           "starship"
+          "pixi"
         ];
         # List of Cask Apps
         casks = [
