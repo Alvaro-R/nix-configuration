@@ -71,6 +71,7 @@
           "spotify"
           "microsoft-teams"
           "readdle-spark"
+          "onedrive"
         ];
         # List of MacOS App Store Apps
         masApps = {
