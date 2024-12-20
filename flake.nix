@@ -80,6 +80,7 @@
           "Windows App" = 1295203466;
           "Parallels Desktop" = 1085114709;
           "WhatsApp" = 310633997;
+          "Slack" = 803453959;
         };
         # Ensure only packages specified in configuration are installed.
         # Apps not listed in configuration will be removed
