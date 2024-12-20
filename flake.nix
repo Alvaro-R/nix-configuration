@@ -79,6 +79,7 @@
           # Use 'mas search app_name' to find App Store ID
           "Windows App" = 1295203466;
           "Parallels Desktop" = 1085114709;
+          "WhatsApp" = 310633997;
         };
         # Ensure only packages specified in configuration are installed.
         # Apps not listed in configuration will be removed
