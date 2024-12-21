@@ -46,6 +46,7 @@
         pkgs.alejandra
         pkgs.nixd
         pkgs.bash-completion
+        pkgs.lsd
       ];
       # <<<<<<<<<< Packages <<<<<<<<<<
 
@@ -62,6 +63,9 @@
           "r"
           "starship"
           "pixi"
+          "fzf"
+          "bat"
+          "zoxide"
         ];
         # List of Cask Apps
         casks = [
@@ -214,9 +218,6 @@
       # Enable alternative shell support in nix-darwin.
       # Create /etc/zshrc that loads the nix-darwin environment.
       programs.zsh.enable = true; # default shell on catalina
-      programs.zsh.enableSyntaxHighlighting=true;
-      programs.zsh.enableCompletion = true;
-      programs.zsh.enableBashCompletion = true;
 
       # programs.fish.enable = true;
 

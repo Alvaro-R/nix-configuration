@@ -78,6 +78,10 @@
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
+  # programs.zsh.enableSyntaxHighlighting=true;
+  # programs.zsh.enableCompletion = true;
+  # programs.zsh.enableBashCompletion = true;
+
   # Applications configuration
   programs = {
     git = {
