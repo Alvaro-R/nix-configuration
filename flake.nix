@@ -66,6 +66,9 @@
           "fzf"
           "bat"
           "zoxide"
+          "zsh-autosuggestions"
+          "zsh-completions"
+          "zsh-syntax-highlighting"
         ];
         # List of Cask Apps
         casks = [
