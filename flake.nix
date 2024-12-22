@@ -80,6 +80,7 @@
           "readdle-spark"
           "onedrive"
           "obsidian"
+          "zotero"
         ];
         # List of MacOS App Store Apps
         masApps = {
