@@ -79,6 +79,7 @@
           "microsoft-teams"
           "readdle-spark"
           "onedrive"
+          "obsidian"
         ];
         # List of MacOS App Store Apps
         masApps = {
@@ -156,59 +157,58 @@
       # System configuration
       system.defaults = {
         # Finder
-        finder.AppleShowAllExtensions=true; # Always show file extensions
-        finder.AppleShowAllFiles=false; # Allways shos hidden files
-        finder.FXPreferredViewStyle="clmv"; # "icnv" = Icon view, "Nlsv" = List view, "clmv" = Column View, "Flwv" = Gallery View The default is icnv.
-        finder.FXRemoveOldTrashItems=false; # Remove items in the trash after 30 days. The default is false.
-        finder.FXEnableExtensionChangeWarning=true; # Whether to show warnings when change the file extension of files. The default is true.
-        finder.QuitMenuItem=false; # Whether to allow quitting of the Finder. The default is false.
-        finder.ShowExternalHardDrivesOnDesktop=true; # Whether to show external disks on desktop. The default is true.
-        finder.ShowHardDrivesOnDesktop=false; # Whether to show hard disks on desktop. The default is false.
-        finder.ShowMountedServersOnDesktop=false; # Whether to show connected servers on desktop. The default is false.
-        finder.ShowPathbar=true; # Show path breadcrumbs in finder windows. The default is false.
-        finder.ShowRemovableMediaOnDesktop=true; # Whether to show removable media (CDs, DVDs and iPods) on desktop. The default is true.
-        finder.ShowStatusBar=true; # Show status bar at bottom of finder windows with item/disk space stats. The default is false.
+        finder.AppleShowAllExtensions = true; # Always show file extensions
+        finder.AppleShowAllFiles = false; # Allways shos hidden files
+        finder.FXPreferredViewStyle = "clmv"; # "icnv" = Icon view, "Nlsv" = List view, "clmv" = Column View, "Flwv" = Gallery View The default is icnv.
+        finder.FXRemoveOldTrashItems = false; # Remove items in the trash after 30 days. The default is false.
+        finder.FXEnableExtensionChangeWarning = true; # Whether to show warnings when change the file extension of files. The default is true.
+        finder.QuitMenuItem = false; # Whether to allow quitting of the Finder. The default is false.
+        finder.ShowExternalHardDrivesOnDesktop = true; # Whether to show external disks on desktop. The default is true.
+        finder.ShowHardDrivesOnDesktop = false; # Whether to show hard disks on desktop. The default is false.
+        finder.ShowMountedServersOnDesktop = false; # Whether to show connected servers on desktop. The default is false.
+        finder.ShowPathbar = true; # Show path breadcrumbs in finder windows. The default is false.
+        finder.ShowRemovableMediaOnDesktop = true; # Whether to show removable media (CDs, DVDs and iPods) on desktop. The default is true.
+        finder.ShowStatusBar = true; # Show status bar at bottom of finder windows with item/disk space stats. The default is false.
         # Activity Monitor
-        ActivityMonitor.IconType=null; # Change the icon in the dock when running.
-        ActivityMonitor.OpenMainWindow=true; # Open the main window when opening Activity Monitor. Default is true.
-        ActivityMonitor.ShowCategory=100; # Change which processes to show.
-        ActivityMonitor.SortColumn=null; # Which column to sort the main activity page (such as "CPUUsage"). Default is null.
-        ActivityMonitor.SortDirection=null; # The sort direction of the sort column (0 is decending). Default is null.
+        ActivityMonitor.IconType = null; # Change the icon in the dock when running.
+        ActivityMonitor.OpenMainWindow = true; # Open the main window when opening Activity Monitor. Default is true.
+        ActivityMonitor.ShowCategory = 100; # Change which processes to show.
+        ActivityMonitor.SortColumn = null; # Which column to sort the main activity page (such as "CPUUsage"). Default is null.
+        ActivityMonitor.SortDirection = null; # The sort direction of the sort column (0 is decending). Default is null.
         # Control Center
-        controlcenter.AirDrop=true; # Show a AirDrop control in menu bar. Default is null.
-        controlcenter.BatteryShowPercentage=false; # Show a battery percentage in menu bar. Default is null.
-        controlcenter.Bluetooth=false; # Show a bluetooth control in menu bar. Default is null.
-        controlcenter.Display=true; # Show a Screen Brightness control in menu bar. Default is null.
-        controlcenter.FocusModes=true; # Show a Focus control in menu bar. Default is null.
-        controlcenter.NowPlaying=true; # Show a Now Playing control in menu bar. Default is null.
-        controlcenter.Sound=true; # Show a sound control in menu bar . Default is null.
+        controlcenter.AirDrop = true; # Show a AirDrop control in menu bar. Default is null.
+        controlcenter.BatteryShowPercentage = false; # Show a battery percentage in menu bar. Default is null.
+        controlcenter.Bluetooth = false; # Show a bluetooth control in menu bar. Default is null.
+        controlcenter.Display = true; # Show a Screen Brightness control in menu bar. Default is null.
+        controlcenter.FocusModes = true; # Show a Focus control in menu bar. Default is null.
+        controlcenter.NowPlaying = true; # Show a Now Playing control in menu bar. Default is null.
+        controlcenter.Sound = true; # Show a sound control in menu bar . Default is null.
         # Dock
         dock.autohide = true;
         # Hitoolbox
-        hitoolbox.AppleFnUsageType="Show Emoji & Symbols"; # Chooses what happens when you press the Fn key on the keyboard. A restart is required for this setting to take effect. "Do Nothing", "Change Input Source", "Show Emoji & Symbols", "Start Dictation"
+        hitoolbox.AppleFnUsageType = "Show Emoji & Symbols"; # Chooses what happens when you press the Fn key on the keyboard. A restart is required for this setting to take effect. "Do Nothing", "Change Input Source", "Show Emoji & Symbols", "Start Dictation"
         # Loging Window
-        loginwindow.GuestEnabled=false; # Allow users to login to the machine as guests using the Guest account. Default is true.
-        loginwindow.LoginwindowText="Álvaro Román"; # Text to be shown on the login window. Default is "\\U03bb".
-        loginwindow.PowerOffDisabledWhileLoggedIn=false; # If set to true, the Power Off menu item will be disabled when the user is logged in. Default is false.
-        loginwindow.RestartDisabled=false; # Hides the Restart button on the login screen. Default is false.
-        loginwindow.RestartDisabledWhileLoggedIn=false; # Disables the “Restart” option when users are logged in. Default is false.
-        loginwindow.SHOWFULLNAME=false; # Displays login window as a name and password field instead of a list of users. Default is false.
-        loginwindow.ShutDownDisabled=false; # Hides the Shut Down button on the login screen. Default is false.
-        loginwindow.ShutDownDisabledWhileLoggedIn=false; # Disables the "Shutdown" option when users are logged in. Default is false.
-        loginwindow.SleepDisabled=false; # Hides the Sleep button on the login screen. Default is false.
+        loginwindow.GuestEnabled = false; # Allow users to login to the machine as guests using the Guest account. Default is true.
+        loginwindow.LoginwindowText = "Álvaro Román"; # Text to be shown on the login window. Default is "\\U03bb".
+        loginwindow.PowerOffDisabledWhileLoggedIn = false; # If set to true, the Power Off menu item will be disabled when the user is logged in. Default is false.
+        loginwindow.RestartDisabled = false; # Hides the Restart button on the login screen. Default is false.
+        loginwindow.RestartDisabledWhileLoggedIn = false; # Disables the “Restart” option when users are logged in. Default is false.
+        loginwindow.SHOWFULLNAME = false; # Displays login window as a name and password field instead of a list of users. Default is false.
+        loginwindow.ShutDownDisabled = false; # Hides the Shut Down button on the login screen. Default is false.
+        loginwindow.ShutDownDisabledWhileLoggedIn = false; # Disables the "Shutdown" option when users are logged in. Default is false.
+        loginwindow.SleepDisabled = false; # Hides the Sleep button on the login screen. Default is false.
         # Menu Extra Clock
         # TODO
         # NSGlobalDomain
-        NSGlobalDomain.AppleInterfaceStyle="Dark"; # Set to 'Dark' to enable dark mode, or leave unset for normal mode.
-        NSGlobalDomain.AppleInterfaceStyleSwitchesAutomatically=false; # Whether to automatically switch between light and dark mode. The default is false.
+        NSGlobalDomain.AppleInterfaceStyle = "Dark"; # Set to 'Dark' to enable dark mode, or leave unset for normal mode.
+        NSGlobalDomain.AppleInterfaceStyleSwitchesAutomatically = false; # Whether to automatically switch between light and dark mode. The default is false.
 
         # Screen capture
         screencapture.disable-shadow = false;
         screencapture.include-date = true;
         screencapture.location = "/Users/alvaroroman/Screenshots";
-        screencapture.show-thumbnail=true;
-        screencapture.type="png";
-
+        screencapture.show-thumbnail = true;
+        screencapture.type = "png";
       };
 
       security.pam.enableSudoTouchIdAuth = true;
