@@ -81,6 +81,7 @@
           "onedrive"
           "obsidian"
           "zotero"
+          "hammerspoon"
         ];
         # List of MacOS App Store Apps
         masApps = {
