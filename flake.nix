@@ -179,13 +179,13 @@
         ActivityMonitor.SortColumn = null; # Which column to sort the main activity page (such as "CPUUsage"). Default is null.
         ActivityMonitor.SortDirection = null; # The sort direction of the sort column (0 is decending). Default is null.
         # Control Center
-        controlcenter.AirDrop = true; # Show a AirDrop control in menu bar. Default is null.
+        controlcenter.AirDrop = false; # Show a AirDrop control in menu bar. Default is null.
         controlcenter.BatteryShowPercentage = false; # Show a battery percentage in menu bar. Default is null.
-        controlcenter.Bluetooth = false; # Show a bluetooth control in menu bar. Default is null.
-        controlcenter.Display = true; # Show a Screen Brightness control in menu bar. Default is null.
-        controlcenter.FocusModes = true; # Show a Focus control in menu bar. Default is null.
-        controlcenter.NowPlaying = true; # Show a Now Playing control in menu bar. Default is null.
-        controlcenter.Sound = true; # Show a sound control in menu bar . Default is null.
+        controlcenter.Bluetooth = true; # Show a bluetooth control in menu bar. Default is null.
+        controlcenter.Display = false; # Show a Screen Brightness control in menu bar. Default is null.
+        controlcenter.FocusModes = false; # Show a Focus control in menu bar. Default is null.
+        controlcenter.NowPlaying = false; # Show a Now Playing control in menu bar. Default is null.
+        controlcenter.Sound = false; # Show a sound control in menu bar . Default is null.
         # Dock
         dock.autohide = true;
         # Hitoolbox
