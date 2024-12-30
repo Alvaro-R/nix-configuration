@@ -82,6 +82,7 @@
           "obsidian"
           "zotero"
           "hammerspoon"
+          "downie"
         ];
         # List of MacOS App Store Apps
         masApps = {
