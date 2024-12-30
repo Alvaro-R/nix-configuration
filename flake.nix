@@ -83,6 +83,8 @@
           "zotero"
           "hammerspoon"
           "downie"
+          "discord"
+          "docker"
         ];
         # List of MacOS App Store Apps
         masApps = {
