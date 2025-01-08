@@ -85,6 +85,7 @@
           "downie"
           "discord"
           "docker"
+          "texmaker"
         ];
         # List of MacOS App Store Apps
         masApps = {
@@ -95,6 +96,7 @@
           "WhatsApp" = 310633997;
           "Slack" = 803453959;
           "ASUSTOR Control Center" = 1515453657;
+          "Microsoft Excel" = 462058435;
         };
         # Ensure only packages specified in configuration are installed.
         # Apps not listed in configuration will be removed
