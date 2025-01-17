@@ -69,6 +69,7 @@
           "zsh-autosuggestions"
           "zsh-completions"
           "zsh-syntax-highlighting"
+          "duckdb"
         ];
         # List of Cask Apps
         casks = [
