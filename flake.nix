@@ -71,6 +71,7 @@
           "zsh-syntax-highlighting"
           "duckdb"
           "ruff"
+          "ollama"
         ];
         # List of Cask Apps
         casks = [
@@ -88,7 +89,8 @@
           "discord"
           "docker"
           "texmaker"
-          "dbeaver-community"
+          "tunnelblick"
+          # "dbeaver-community"
         ];
         # List of MacOS App Store Apps
         masApps = {
