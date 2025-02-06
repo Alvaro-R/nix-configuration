@@ -72,6 +72,7 @@
           "duckdb"
           "ruff"
           "ollama"
+          "pandoc"
         ];
         # List of Cask Apps
         casks = [
