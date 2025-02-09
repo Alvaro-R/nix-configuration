@@ -91,6 +91,9 @@
           "docker"
           "texmaker"
           "tunnelblick"
+          "google-chrome"
+          "firefox"
+          "cursor"
           # "dbeaver-community"
         ];
         # List of MacOS App Store Apps
