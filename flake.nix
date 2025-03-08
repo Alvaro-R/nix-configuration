@@ -60,7 +60,7 @@
         brews = [
           "mas"
           "stow"
-          "r"
+          # "r"
           "starship"
           "pixi"
           "fzf"
@@ -73,12 +73,15 @@
           "ruff"
           "ollama"
           "pandoc"
+          "harfbuzz"
+          "fribidi"
         ];
         # List of Cask Apps
         casks = [
           "wezterm"
           "visual-studio-code"
           "rstudio"
+          "r"
           "spotify"
           "microsoft-teams"
           "readdle-spark"
@@ -94,6 +97,8 @@
           "google-chrome"
           "firefox"
           "cursor"
+          "balenaetcher"
+          "miniforge"
           # "dbeaver-community"
         ];
         # List of MacOS App Store Apps
@@ -137,8 +142,8 @@
       };
       # home-manager.backupFileExtension = "backup";
 
-      nix.configureBuildUsers = true;
-      nix.useDaemon = true;
+      # nix.configureBuildUsers = true;
+      # nix.useDaemon = true;
 
       # Nix Garbage Collection
       nix.gc = {
@@ -227,10 +232,10 @@
         screencapture.type = "png";
       };
 
-      security.pam.enableSudoTouchIdAuth = true;
+      security.pam.services.sudo_local.touchIdAuth = true;
 
       # Auto upgrade nix package and the daemon service.
-      services.nix-daemon.enable = true;
+      # services.nix-daemon.enable = true;
 
       # Necessary for using flakes on this system.
       nix.settings.experimental-features = "nix-command flakes";
