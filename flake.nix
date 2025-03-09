@@ -69,6 +69,7 @@
           "zsh-autosuggestions"
           "zsh-completions"
           "zsh-syntax-highlighting"
+          "conda-zsh-completion"
           "duckdb"
           "ruff"
           "ollama"
