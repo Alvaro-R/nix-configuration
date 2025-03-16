@@ -76,6 +76,7 @@
           "pandoc"
           "harfbuzz"
           "fribidi"
+          "asitop"
         ];
         # List of Cask Apps
         casks = [
