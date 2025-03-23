@@ -77,6 +77,7 @@
           "harfbuzz"
           "fribidi"
           "asitop"
+          "tree"
         ];
         # List of Cask Apps
         casks = [
@@ -118,8 +119,8 @@
         # Apps not listed in configuration will be removed
         onActivation.cleanup = "zap";
         # Update Homebrew packages
-        onActivation.autoUpdate = true;
-        onActivation.upgrade = true;
+        onActivation.autoUpdate = false;
+        onActivation.upgrade = false;
       };
       # <<<<<<<<<< Homebrew <<<<<<<<<<
 
