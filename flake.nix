@@ -78,6 +78,8 @@
           "fribidi"
           "asitop"
           "tree"
+          "lima"
+          "apptainer"
         ];
         # List of Cask Apps
         casks = [
@@ -102,6 +104,9 @@
           "cursor"
           "balenaetcher"
           "miniforge"
+          "virtualbox"
+          "vagrant"
+          "vagrant-manager"
           # "dbeaver-community"
         ];
         # List of MacOS App Store Apps
@@ -119,8 +124,8 @@
         # Apps not listed in configuration will be removed
         onActivation.cleanup = "zap";
         # Update Homebrew packages
-        onActivation.autoUpdate = false;
-        onActivation.upgrade = false;
+        onActivation.autoUpdate = true;
+        onActivation.upgrade = true;
       };
       # <<<<<<<<<< Homebrew <<<<<<<<<<
 
