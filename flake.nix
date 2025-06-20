@@ -79,7 +79,7 @@
           "asitop"
           "tree"
           "lima"
-          "apptainer"
+          "prodigal"
         ];
         # List of Cask Apps
         casks = [
@@ -182,6 +182,8 @@
       networking.hostName = "Ecthelion";
       # Computer Name
       networking.computerName = "Ecthelion";
+
+      system.primaryUser = "alvaroroman";
 
       # System configuration
       system.defaults = {
