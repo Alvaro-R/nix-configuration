@@ -86,7 +86,7 @@
           "wezterm"
           "visual-studio-code"
           "rstudio"
-          "r"
+          "r-app"
           "spotify"
           "microsoft-teams"
           "readdle-spark"
@@ -96,7 +96,7 @@
           "hammerspoon"
           "downie"
           "discord"
-          "docker"
+          "docker-desktop"
           "texmaker"
           "tunnelblick"
           "google-chrome"
@@ -105,8 +105,9 @@
           "balenaetcher"
           "miniforge"
           "virtualbox"
-          "vagrant"
-          "vagrant-manager"
+          # "vagrant"
+          # "vagrant-manager"
+          "drawio"
           # "dbeaver-community"
         ];
         # List of MacOS App Store Apps
@@ -126,6 +127,7 @@
         # Update Homebrew packages
         onActivation.autoUpdate = true;
         onActivation.upgrade = true;
+        onActivation.extraFlags = ["--verbose"];
       };
       # <<<<<<<<<< Homebrew <<<<<<<<<<
 
