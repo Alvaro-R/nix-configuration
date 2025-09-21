@@ -109,6 +109,7 @@
           # "vagrant-manager"
           "drawio"
           # "dbeaver-community"
+          "container"
         ];
         # List of MacOS App Store Apps
         masApps = {
