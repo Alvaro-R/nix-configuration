@@ -110,6 +110,7 @@
           "drawio"
           # "dbeaver-community"
           "container"
+          "claude-code"
         ];
         # List of MacOS App Store Apps
         masApps = {
