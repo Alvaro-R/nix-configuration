@@ -111,6 +111,7 @@
           # "dbeaver-community"
           "container"
           "claude-code"
+          "codex-app"
         ];
         # List of MacOS App Store Apps
         masApps = {
