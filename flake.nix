@@ -80,6 +80,7 @@
           "tree"
           "lima"
           "prodigal"
+          "git-filter-repo"
         ];
         # List of Cask Apps
         casks = [
