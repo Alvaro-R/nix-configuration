@@ -81,6 +81,12 @@
           "lima"
           "prodigal"
           "git-filter-repo"
+          "lazygit"
+          "yazi"
+          "git-delta"
+          "ripgrep"
+          "tealdeer"
+          "btop"
         ];
         # List of Cask Apps
         casks = [
