@@ -57,6 +57,9 @@
       # Homebrew configuration
       homebrew = {
         enable = true;
+        taps = [
+          "Gentleman-Programming/homebrew-tap"
+        ];
         brews = [
           "mas"
           "stow"
@@ -90,6 +93,17 @@
           "ripgrep"
           "tealdeer"
           "btop"
+          "opencode"
+          "gentle-ai"
+          "gemini-cli"
+          "go"
+          "git"
+          "curl"
+          "bash"
+          "make"
+          "awk"
+          "grep"
+          "gnu-sed"
         ];
         # List of Cask Apps
         casks = [
@@ -122,6 +136,7 @@
           "container"
           "claude-code"
           "codex-app"
+          "cursor"
         ];
         # List of MacOS App Store Apps
         masApps = {
@@ -131,7 +146,7 @@
           "Parallels Desktop" = 1085114709;
           "WhatsApp" = 310633997;
           "Slack" = 803453959;
-          "ASUSTOR Control Center" = 1515453657;
+          "ASUSTOR Control Center" = 1515453657;  
           # "Microsoft Excel" = 462058435;
         };
         # Ensure only packages specified in configuration are installed.
