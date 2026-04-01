@@ -104,6 +104,11 @@
           "awk"
           "grep"
           "gnu-sed"
+          "node"
+          "openspec"
+          "nmap"
+          "pipx"
+          "xorriso"
         ];
         # List of Cask Apps
         casks = [
