@@ -123,30 +123,36 @@ in {
 
   # Install missing self-updating tools; existing ones update themselves.
   # A failed install only warns so it never aborts the rest of the activation.
+  # Each block runs in a subshell so its PATH (which puts macOS /usr/bin first)
+  # does not leak into later Home Manager steps that need GNU tools (find -printf).
   home.activation.installSelfUpdatingTools = lib.hm.dag.entryAfter ["writeBoundary"] ''
-    export PATH="${lib.makeBinPath [pkgs.bash pkgs.curl pkgs.coreutils]}:/usr/bin:/bin:$PATH"
-    ${lib.concatStrings (lib.mapAttrsToList (name: tool: ''
-        if [ ! -x "${tool.bin}" ]; then
-          echo "Installing ${name}..."
-          # pipefail: a failed download in `curl | bash` must not exit 0.
-          run bash -o pipefail -c ${lib.escapeShellArg tool.install} \
-            || echo "warning: failed to install ${name}" >&2
-        fi
-      '')
-      selfUpdatingTools)}
+    (
+      export PATH="${lib.makeBinPath [pkgs.bash pkgs.curl pkgs.coreutils]}:/usr/bin:/bin:$PATH"
+      ${lib.concatStrings (lib.mapAttrsToList (name: tool: ''
+          if [ ! -x "${tool.bin}" ]; then
+            echo "Installing ${name}..."
+            # pipefail: a failed download in `curl | bash` must not exit 0.
+            run bash -o pipefail -c ${lib.escapeShellArg tool.install} \
+              || echo "warning: failed to install ${name}" >&2
+          fi
+        '')
+        selfUpdatingTools)}
+    )
   '';
 
   # Install or upgrade global npm packages; runs after the homebrew step, so
   # Homebrew node is available. A failure only warns, like the step above.
   home.activation.installNpmGlobalPackages = lib.hm.dag.entryAfter ["writeBoundary"] ''
-    export PATH="/opt/homebrew/bin:/usr/bin:/bin:$PATH"
-    if command -v npm >/dev/null; then
-      run npm install --global --no-fund --no-audit \
-        --allow-scripts=${lib.escapeShellArg (lib.concatStringsSep "," npmAllowScripts)} \
-        ${lib.concatMapStringsSep " " (pkg: lib.escapeShellArg "${pkg}@latest") npmGlobalPackages} \
-        || echo "warning: failed to install global npm packages" >&2
-    else
-      echo "warning: npm not found; skipping global npm packages" >&2
-    fi
+    (
+      export PATH="/opt/homebrew/bin:/usr/bin:/bin:$PATH"
+      if command -v npm >/dev/null; then
+        run npm install --global --no-fund --no-audit \
+          --allow-scripts=${lib.escapeShellArg (lib.concatStringsSep "," npmAllowScripts)} \
+          ${lib.concatMapStringsSep " " (pkg: lib.escapeShellArg "${pkg}@latest") npmGlobalPackages} \
+          || echo "warning: failed to install global npm packages" >&2
+      else
+        echo "warning: npm not found; skipping global npm packages" >&2
+      fi
+    )
   '';
 }
