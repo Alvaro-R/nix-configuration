@@ -1,5 +1,20 @@
 # Home-manager switch is not necessary when is used with nix-darwin. darwin-rebuild will do it.
-{pkgs, ...}: {
+{
+  pkgs,
+  lib,
+  ...
+}: let
+  # Self-updating tools installed through their official installers instead of
+  # Nix/Homebrew, to get new releases as soon as they ship. Declared here so this
+  # repo still reflects everything installed; versions are not pinned by Nix.
+  # Each entry: binary path checked for presence -> installer command.
+  selfUpdatingTools = {
+    claude-code = {
+      bin = "$HOME/.local/bin/claude";
+      install = "curl -fsSL https://claude.ai/install.sh | bash";
+    };
+  };
+in {
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "alvaroroman";
@@ -96,4 +111,18 @@
   # };
   #   };
   };
+
+  # Install missing self-updating tools; existing ones update themselves.
+  # A failed install only warns so it never aborts the rest of the activation.
+  home.activation.installSelfUpdatingTools = lib.hm.dag.entryAfter ["writeBoundary"] ''
+    export PATH="${lib.makeBinPath [pkgs.bash pkgs.curl pkgs.coreutils]}:/usr/bin:/bin:$PATH"
+    ${lib.concatStrings (lib.mapAttrsToList (name: tool: ''
+        if [ ! -x "${tool.bin}" ]; then
+          echo "Installing ${name}..."
+          run bash -c ${lib.escapeShellArg tool.install} \
+            || echo "warning: failed to install ${name}" >&2
+        fi
+      '')
+      selfUpdatingTools)}
+  '';
 }

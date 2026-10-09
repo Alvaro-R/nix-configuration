@@ -54,6 +54,14 @@
       nix.nixPath = ["nixpkgs=${inputs.nixpkgs}"];
 
       # >>>>>>>>>> Homebrew >>>>>>>>>>
+      # Homebrew 7+ refuses to load formulae from third-party taps until trusted.
+      # Copied in preActivation because the homebrew step runs before home-manager.
+      # Add new taps to ./homebrew/trust.json instead of running `brew trust`.
+      system.activationScripts.preActivation.text = ''
+        install -d -o alvaroroman -g staff /Users/alvaroroman/.homebrew
+        install -m 0644 -o alvaroroman -g staff ${./homebrew/trust.json} /Users/alvaroroman/.homebrew/trust.json
+      '';
+
       # Homebrew configuration
       homebrew = {
         enable = true;
@@ -109,6 +117,7 @@
           "nmap"
           "pipx"
           "xorriso"
+          "pi-coding-agent"
         ];
         # List of Cask Apps
         casks = [
@@ -126,8 +135,8 @@
           "downie"
           "discord"
           "docker-desktop"
-          "texmaker"
-          "tunnelblick"
+          # "texmaker" -- deshabilitado en Homebrew (no pasa Gatekeeper, 2026-09-01)
+          # "tunnelblick"
           "google-chrome"
           "firefox"
           "cursor"
@@ -139,7 +148,7 @@
           "drawio"
           # "dbeaver-community"
           "container"
-          "claude-code"
+          # "claude-code" -- instalado con curl para tenerlo actualizado (declarado en home.nix: selfUpdatingTools)
           "codex-app"
           "cursor"
         ];
@@ -158,9 +167,9 @@
         # Apps not listed in configuration will be removed
         onActivation.cleanup = "zap";
         # Update Homebrew packages
-        onActivation.autoUpdate = true;
+        onActivation.autoUpdate = false;
         onActivation.upgrade = true;
-        onActivation.extraFlags = ["--verbose"];
+        # onActivation.extraFlags = ["--verbose"]; -- demasiado ruido en la salida de rebuild
       };
       # <<<<<<<<<< Homebrew <<<<<<<<<<
 
@@ -316,7 +325,7 @@
           nix-homebrew = {
             enable = true;
             # Apple Silicon Only
-            enableRosetta = true;
+            enableRosetta = false;
             # User owning the Hombrew prefix
             user = "alvaroroman";
             # If Homebrew already installed, automatically migrate existing Homebrew installations
