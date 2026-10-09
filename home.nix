@@ -7,11 +7,17 @@
   # Self-updating tools installed through their official installers instead of
   # Nix/Homebrew, to get new releases as soon as they ship. Declared here so this
   # repo still reflects everything installed; versions are not pinned by Nix.
-  # Each entry: binary path checked for presence -> installer command.
+  # Each entry: binary path checked for presence -> installer command, plus an
+  # optional update command run on every rebuild for tools that don't auto-update.
   selfUpdatingTools = {
     claude-code = {
       bin = "$HOME/.local/bin/claude";
       install = "curl -fsSL https://claude.ai/install.sh | bash";
+    };
+    hermes-agent = {
+      bin = "$HOME/.local/bin/hermes";
+      install = "curl -fsSL https://hermes-agent.nousresearch.com/install.sh | bash";
+      update = "$HOME/.local/bin/hermes update";
     };
   };
 
@@ -134,6 +140,12 @@ in {
             # pipefail: a failed download in `curl | bash` must not exit 0.
             run bash -o pipefail -c ${lib.escapeShellArg tool.install} \
               || echo "warning: failed to install ${name}" >&2
+          ${lib.optionalString (tool ? update) ''
+            else
+              echo "Updating ${name}..."
+              run bash -c ${lib.escapeShellArg tool.update} \
+                || echo "warning: failed to update ${name}" >&2
+          ''}
           fi
         '')
         selfUpdatingTools)}
