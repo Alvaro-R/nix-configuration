@@ -119,7 +119,8 @@ in {
     ${lib.concatStrings (lib.mapAttrsToList (name: tool: ''
         if [ ! -x "${tool.bin}" ]; then
           echo "Installing ${name}..."
-          run bash -c ${lib.escapeShellArg tool.install} \
+          # pipefail: a failed download in `curl | bash` must not exit 0.
+          run bash -o pipefail -c ${lib.escapeShellArg tool.install} \
             || echo "warning: failed to install ${name}" >&2
         fi
       '')
