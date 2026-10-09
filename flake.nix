@@ -101,6 +101,7 @@
           "opencode"
           "gentle-ai"
           "engram"
+          "gga"
           "gemini-cli"
           "go"
           "git"
