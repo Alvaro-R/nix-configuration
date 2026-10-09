@@ -14,6 +14,15 @@
       install = "curl -fsSL https://claude.ai/install.sh | bash";
     };
   };
+
+  # Global npm packages (Homebrew node), upgraded to @latest on every rebuild.
+  npmGlobalPackages = [
+    "gentle-pi" # provides gentle-shell
+    "@openai/codex"
+  ];
+  # npm 11 blocks install scripts by default. gentle-pi's postinstall fetches the
+  # Gentle AI binary it needs; the rest are its dependencies' native setup.
+  npmAllowScripts = ["gentle-pi" "@google/genai" "esbuild" "protobufjs"];
 in {
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
@@ -125,5 +134,19 @@ in {
         fi
       '')
       selfUpdatingTools)}
+  '';
+
+  # Install or upgrade global npm packages; runs after the homebrew step, so
+  # Homebrew node is available. A failure only warns, like the step above.
+  home.activation.installNpmGlobalPackages = lib.hm.dag.entryAfter ["writeBoundary"] ''
+    export PATH="/opt/homebrew/bin:/usr/bin:/bin:$PATH"
+    if command -v npm >/dev/null; then
+      run npm install --global --no-fund --no-audit \
+        --allow-scripts=${lib.escapeShellArg (lib.concatStringsSep "," npmAllowScripts)} \
+        ${lib.concatMapStringsSep " " (pkg: lib.escapeShellArg "${pkg}@latest") npmGlobalPackages} \
+        || echo "warning: failed to install global npm packages" >&2
+    else
+      echo "warning: npm not found; skipping global npm packages" >&2
+    fi
   '';
 }
