@@ -54,19 +54,16 @@
       nix.nixPath = ["nixpkgs=${inputs.nixpkgs}"];
 
       # >>>>>>>>>> Homebrew >>>>>>>>>>
-      # Homebrew 7+ refuses to load formulae from third-party taps until trusted.
-      # Copied in preActivation because the homebrew step runs before home-manager.
-      # Add new taps to ./homebrew/trust.json instead of running `brew trust`.
-      system.activationScripts.preActivation.text = ''
-        install -d -o alvaroroman -g staff /Users/alvaroroman/.homebrew
-        install -m 0644 -o alvaroroman -g staff ${./homebrew/trust.json} /Users/alvaroroman/.homebrew/trust.json
-      '';
-
       # Homebrew configuration
       homebrew = {
         enable = true;
+        # Homebrew 7+ refuses formulae from third-party taps until trusted.
+        # Declare trust here: bundle cleanup resets the trust store to the Brewfile.
         taps = [
-          "Gentleman-Programming/homebrew-tap"
+          {
+            name = "Gentleman-Programming/homebrew-tap";
+            trusted = true;
+          }
         ];
         brews = [
           "mas"
@@ -103,6 +100,7 @@
           "btop"
           "opencode"
           "gentle-ai"
+          "engram"
           "gemini-cli"
           "go"
           "git"
