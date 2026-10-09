@@ -16,7 +16,8 @@
     };
     hermes-agent = {
       bin = "$HOME/.local/bin/hermes";
-      install = "curl -fsSL https://hermes-agent.nousresearch.com/install.sh | bash";
+      # Activation has no terminal: skip the interactive wizard (run `hermes setup` once by hand).
+      install = "curl -fsSL https://hermes-agent.nousresearch.com/install.sh | bash -s -- --skip-setup";
       update = "$HOME/.local/bin/hermes update";
     };
   };
