@@ -117,6 +117,7 @@
           "pipx"
           "xorriso"
           "pi-coding-agent"
+          "gh"
         ];
         # List of Cask Apps
         casks = [
