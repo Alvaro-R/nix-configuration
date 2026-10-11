@@ -149,7 +149,7 @@
           "container"
           # "claude-code" -- instalado con curl para tenerlo actualizado (declarado en home.nix: selfUpdatingTools)
           "codex-app"
-          "cursor"
+          # "cursor" -- no lo utilizo
         ];
         # List of MacOS App Store Apps
         masApps = {
@@ -159,7 +159,7 @@
           "Parallels Desktop" = 1085114709;
           "WhatsApp" = 310633997;
           "Slack" = 803453959;
-          # "Control Center" = 1515453657;  
+          "Control Center" = 1515453657;
           # "Microsoft Excel" = 462058435;
         };
         # Ensure only packages specified in configuration are installed.
