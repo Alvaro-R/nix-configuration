@@ -30,6 +30,18 @@
   # npm 11 blocks install scripts by default. gentle-pi's postinstall fetches the
   # Gentle AI binary it needs; the rest are its dependencies' native setup.
   npmAllowScripts = ["gentle-pi" "@google/genai" "esbuild" "protobufjs"];
+
+  # Skills from ./skills linked into every agent's global skills directory, so
+  # any agent in any project knows how this machine is managed.
+  agentSkills = ["machine-management"];
+  agentSkillDirs = [
+    ".claude/skills"
+    ".codex/skills"
+    ".config/opencode/skills"
+    ".gemini/skills"
+    ".copilot/skills"
+    ".hermes/skills"
+  ];
 in {
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
@@ -86,6 +98,14 @@ in {
   # '';
   # };
 
+  home.file = lib.listToAttrs (lib.concatMap (dir:
+    map (skill: {
+      name = "${dir}/${skill}";
+      value.source = ./skills/${skill};
+    })
+    agentSkills)
+  agentSkillDirs);
+
   # Home Manager can also manage your environment variables through
   # 'home.sessionVariables'. These will be explicitly sourced when using a
   # shell provided by Home Manager. If you don't want to manage your shell
@@ -115,17 +135,17 @@ in {
 
   # Applications configuration
   programs = {
-  #   git = {
-  #     enable = true;
-  #     userName = "Alvaro-R";
-  #     userEmail = "alvaro.roman@users.noreply.github.com";
-  #     extraConfig = {
-  #       core = {
-  #         excludesFile="/Users/alvaroroman/.dotfiles/.config/git/gitignore_global";
-  #         editor = "code --wait";
-  #   };
-  # };
-  #   };
+    #   git = {
+    #     enable = true;
+    #     userName = "Alvaro-R";
+    #     userEmail = "alvaro.roman@users.noreply.github.com";
+    #     extraConfig = {
+    #       core = {
+    #         excludesFile="/Users/alvaroroman/.dotfiles/.config/git/gitignore_global";
+    #         editor = "code --wait";
+    #   };
+    # };
+    #   };
   };
 
   # Install missing self-updating tools; existing ones update themselves.
@@ -136,20 +156,20 @@ in {
     (
       export PATH="${lib.makeBinPath [pkgs.bash pkgs.curl pkgs.coreutils]}:/usr/bin:/bin:$PATH"
       ${lib.concatStrings (lib.mapAttrsToList (name: tool: ''
-          if [ ! -x "${tool.bin}" ]; then
-            echo "Installing ${name}..."
-            # pipefail: a failed download in `curl | bash` must not exit 0.
-            run bash -o pipefail -c ${lib.escapeShellArg tool.install} \
-              || echo "warning: failed to install ${name}" >&2
-          ${lib.optionalString (tool ? update) ''
-            else
-              echo "Updating ${name}..."
-              run bash -c ${lib.escapeShellArg tool.update} \
-                || echo "warning: failed to update ${name}" >&2
-          ''}
-          fi
-        '')
-        selfUpdatingTools)}
+        if [ ! -x "${tool.bin}" ]; then
+          echo "Installing ${name}..."
+          # pipefail: a failed download in `curl | bash` must not exit 0.
+          run bash -o pipefail -c ${lib.escapeShellArg tool.install} \
+            || echo "warning: failed to install ${name}" >&2
+        ${lib.optionalString (tool ? update) ''
+          else
+            echo "Updating ${name}..."
+            run bash -c ${lib.escapeShellArg tool.update} \
+              || echo "warning: failed to update ${name}" >&2
+        ''}
+        fi
+      '')
+      selfUpdatingTools)}
     )
   '';
 
