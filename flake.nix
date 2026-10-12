@@ -228,6 +228,14 @@
       # Computer Name
       networking.computerName = "Ecthelion";
 
+      # DNS servers, set on these network services instead of the DHCP ones.
+      # The ISP's DHCP DNS (100.90.1.1, 100.100.1.1) lies inside 100.64.0.0/10,
+      # which Tailscale routes into its tunnel, so those servers are unreachable
+      # and Safari fails to resolve names. Pi-hole on the NAS over the tailnet
+      # first; Quad9 (Pi-hole's own upstream) as fallback when Tailscale is down.
+      networking.knownNetworkServices = ["USB 10/100/1000 LAN" "Wi-Fi"];
+      networking.dns = ["100.84.108.59" "9.9.9.9"];
+
       system.primaryUser = "alvaroroman";
 
       # System configuration

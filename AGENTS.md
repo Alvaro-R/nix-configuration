@@ -34,6 +34,7 @@ that is not declared here is REMOVED on the next rebuild.
 | GUI app (cask) | `flake.nix` → `homebrew.casks` |
 | Mac App Store app | `flake.nix` → `homebrew.masApps` (`"Name" = <id>;`, find id with `mas search`) |
 | macOS settings (Dock, Finder, etc.) | `flake.nix` → `system.defaults` |
+| DNS servers per network service | `flake.nix` → `networking.dns` + `networking.knownNetworkServices` |
 | Self-updating tool with official installer (e.g. Claude Code) | `home.nix` → `selfUpdatingTools` |
 | Global npm package | `home.nix` → `npmGlobalPackages` (and `npmAllowScripts` if it needs install scripts) |
 | Dotfiles / config files | `home.nix` → `home.file` |
