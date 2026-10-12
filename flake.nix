@@ -233,6 +233,10 @@
       # which Tailscale routes into its tunnel, so those servers are unreachable
       # and Safari fails to resolve names. Pi-hole on the NAS over the tailnet
       # first; Quad9 (Pi-hole's own upstream) as fallback when Tailscale is down.
+      # iCloud Private Relay must stay OFF (System Settings → Apple Account →
+      # iCloud; not declarable here): Pi-hole blocks mask.icloud.com, and with
+      # Relay on Safari fails with "cannot find the server". See incanus repo,
+      # docs/adm/network.md ("Clients on this LAN").
       networking.knownNetworkServices = ["USB 10/100/1000 LAN" "Wi-Fi"];
       networking.dns = ["100.84.108.59" "9.9.9.9"];
 
