@@ -139,7 +139,6 @@
           # "tunnelblick"
           "google-chrome"
           "firefox"
-          "cursor"
           "balenaetcher"
           "miniforge"
           "virtualbox"
@@ -151,6 +150,8 @@
           # "claude-code" -- instalado con curl para tenerlo actualizado (declarado en home.nix: selfUpdatingTools)
           "codex-app"
           # "cursor" -- no lo utilizo
+          "tailscale-app"
+          "telegram"
         ];
         # List of MacOS App Store Apps
         masApps = {
