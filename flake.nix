@@ -47,6 +47,8 @@
         pkgs.nixd
         pkgs.bash-completion
         pkgs.lsd
+        pkgs.whisper-cpp # local meeting transcription (tesis-brain)
+        pkgs.ffmpeg # audio conversion for whisper-cpp
       ];
       # <<<<<<<<<< Packages <<<<<<<<<<
 
