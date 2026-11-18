@@ -100,7 +100,8 @@
           "btop"
           "opencode"
           "gentle-ai"
-          "engram"
+          # Tap-qualified: homebrew/core also ships an "engram" formula.
+          "gentleman-programming/tap/engram"
           "gga"
           "gemini-cli"
           "go"
